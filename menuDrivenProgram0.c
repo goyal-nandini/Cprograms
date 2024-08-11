@@ -6,8 +6,8 @@ void printMat(int r, int c, int mat[r][c]);
 void displayMat(int r, int c, int mat[r][c]);
 void sumMat(int r, int c, int mat[r][c], int mat1[r][c], int mat2[r][c]);
 void diffMat(int r, int c, int mat[r][c], int mat1[r][c], int mat2[r][c]);
-void trans1Mat(int r, int c, int mat[r][c], int mat1[r][c]); // have to made different function for different row and column sizes!!
-void trans2Mat(int r, int c, int mat[r][c], int mat2[r][c]);
+void trans1Mat(int r, int c, int matT[r][c], int mat[r][c]); 
+//void trans2Mat(int r, int c, int mat[r][c], int mat2[r][c]);
 void mulMat(int r, int c, int mat[r][c], int mat1[r][c], int mat2[r][c]);
 
 int main()
@@ -78,9 +78,9 @@ int main()
             displayMat(c1, r1, mat1T);
 
             printf("\nTranspose of the matrix 2 is:\n");
-            trans1Mat(r1, c1, mat2T, mat2);
+            trans1Mat(r2, c2, mat2T, mat2);
             printf("\nHere is the new matrix:\n");
-            displayMat(c1, r1, mat2T);
+            displayMat(c2, r2, mat2T);
 
             break;
         case 4:
@@ -148,20 +148,12 @@ void diffMat(int r, int c, int mat[r][c], int mat1[r][c], int mat2[r][c])
             mat[i][j] = mat1[i][j] - mat2[i][j];
     }
 }
-void trans1Mat(int r, int c, int mat[r][c], int mat1[r][c])
+void trans1Mat(int r, int c, int matT[r][c], int mat[r][c])
 {
     for (i = 0; i < r; i++)
     {
         for (j = 0; j < c; j++)
-            mat[i][j] = mat1[j][i];
-    }
-}
-void trans2Mat(int r, int c, int mat[r][c], int mat2[r][c])
-{
-    for (i = 0; i < r; i++)
-    {
-        for (j = 0; j < c; j++)
-            mat[i][j] = mat2[j][i];
+            matT[i][j] = mat[j][i];
     }
 }
 void mulMat(int r, int c, int mat[r][c], int mat1[r][c], int mat2[r][c])
